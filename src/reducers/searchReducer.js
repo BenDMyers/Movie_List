@@ -1,4 +1,4 @@
-import {CLEAR_SEARCH, UPDATE_SEARCH_QUERY, UPDATE_SEARCH_RESULTS} from '../actions/types';
+import {CLEAR_SEARCH, SET_SEARCH_RESULTS_SPINNER, UPDATE_SEARCH_QUERY, UPDATE_SEARCH_RESULTS} from '../actions/types';
 
 const DEFAULT_STATE = {
     loading: false,
@@ -12,6 +12,9 @@ const searchReducer = (state=DEFAULT_STATE, action) => {
     switch(action.type) {
         case CLEAR_SEARCH:
             return {...DEFAULT_STATE};
+        case SET_SEARCH_RESULTS_SPINNER:
+            if(state.loading) {return {...state, loading: 'spin'};}
+            return state;
         case UPDATE_SEARCH_QUERY:
             return {
                 ...state,
