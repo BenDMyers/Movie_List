@@ -1,4 +1,3 @@
-console.log(process.env.TMDB_KEY);
 module.exports = {
-    tmdbKey: process.env.TMDB_KEY
+    tmdbKey: process.env.REACT_APP_TMDB_KEY
 }
