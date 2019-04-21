@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 const SearchResults = (props) => {
     if(props.loading) {
         return <p>Loading...</p>;
-    } else if(props.query.length && !props.results.length) {
+    } else if(props.query && !props.results.length) {
         return <p>No movies found</p>;
     }
 
@@ -20,7 +20,7 @@ const SearchResults = (props) => {
 const mapStateToProps = (state) => {
     return {
         loading: state.search.loading === 'spin',
-        query: state.search.query,
+        query: state.search.query.length > 0,
         results: state.search.results
     };
 }

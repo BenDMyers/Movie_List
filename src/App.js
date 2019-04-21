@@ -1,14 +1,37 @@
-import React from 'react';
-import './App.css';
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
 
+import './App.css';
+import {getMovies} from './actions/moviesActions';
+import MovieList from './components/MovieList';
 import Search from './components/Search';
 
-const App = () => {
-    return (
-        <div>
-            <Search />
-        </div>
-    );
+class App extends Component {
+    componentDidMount() {
+        this.props.getMovies();
+    }
+
+    render() {
+        return (
+            <div>
+                <Search />
+                <div>
+                    <h2>Vote on Movies for Ben to Watch Next</h2>
+                    <MovieList list="recommended" />
+                </div>
+                <hr />
+                <div>
+                    <h2>Ben Has Now Watched...</h2>
+                    <MovieList list="watched" />
+                </div>
+                <hr />
+                <div>
+                    <h2>Ben Has Already Watched...</h2>
+                    <MovieList list="alreadyWatched" />
+                </div>
+            </div>
+        );
+    }
 }
 
-export default App;
+export default connect(null, {getMovies})(App);
