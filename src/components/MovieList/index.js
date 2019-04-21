@@ -1,12 +1,22 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import Grid from '@material-ui/core/Grid';
+
+import chunk from '../../utils/chunk';
+import MovieListRow from './MovieListRow';
 
 const MovieList = (props) => {
-    const movies = props.movies.map(movie => <li key={movie.id}>{movie.title}</li>)
+    // const movies = props.movies.map(movie => <li key={movie.id}><MovieItem {...movie} /></li>)
+    const rowContents = chunk(props.movies, 5);
+    const rows = rowContents.map((row, index) => (
+        <Grid key={index} container item xs={12} spacing={24}>
+            <MovieListRow contents={row} />
+        </Grid>
+    ));
     return (
-        <ul>
-            {movies}
-        </ul>
+        <Grid container spacing={8}>
+            {rows}
+        </Grid>
     );
 };
 
