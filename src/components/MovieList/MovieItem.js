@@ -10,7 +10,7 @@ const MovieItem = (props) => {
     const poster = `https://image.tmdb.org/t/p/original${props.poster}?api_key=${tmdbKey}`;
     return (
         <Card>
-            <CardMedia component="img" src={poster} title={`Poster for ${title})`} />
+            <CardMedia component="img" src={poster} alt={`Poster for ${title}`} />
             <CardContent>
                 {title}
             </CardContent>

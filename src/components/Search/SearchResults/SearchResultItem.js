@@ -8,25 +8,55 @@ import CardMedia from '@material-ui/core/CardMedia';
 import {tmdbKey} from '../../../config/keys';
 import {recommend} from '../../../actions/moviesActions';
 
+const LIST_NAMES = ['inflight', 'recommended', 'watched', 'alreadyWatched'];
+
 const SearchResultItem = (props) => {
     const handleClick = () => {props.recommend(props.id, props.dispatch);};
     const title = `${props.title} (${props.release_date.split('-')[0]})`;
     const poster = `https://image.tmdb.org/t/p/original${props.poster_path}?api_key=${tmdbKey}`;
 
-    return (
-        <ButtonBase onClick={handleClick}>
-            <Card>
-                <CardMedia component="img" src={poster} title={`Poster for ${title})`} />
-                <CardContent>
-                    {title}
-                </CardContent>
-            </Card>
-        </ButtonBase>
+    let movieItem = (
+        <Card>
+            <CardMedia component="img" src={poster} alt={`Poster for ${title}`} />
+            <CardContent>
+                {title}
+            </CardContent>
+        </Card>
     );
+
+    if(!props.currentList) {
+        movieItem = (
+            <ButtonBase onClick={handleClick}>
+                {movieItem}
+            </ButtonBase>
+        );
+    }
+
+    return movieItem;
 };
+
+const determineList = (id, lists) => {
+    let list;
+    lists.forEach((currentList, index) => {
+        if(!list && currentList.find(mov => mov.id == id)) {
+            list = index;
+        }});
+    return list;
+}
+
+const mapStateToProps = (state, ownProps) => {
+    const {recommended, watched, alreadyWatched} = state.movies;
+    const inflight = state.inflight || [];
+    const allTheLists = [inflight, recommended, watched, alreadyWatched];
+    let currentList = determineList(ownProps.id, allTheLists);
+
+    return {
+        currentList: currentList && LIST_NAMES[currentList]
+    };
+}
 
 const mapDispatchToProps = (dispatch) => {
     return {dispatch, recommend};
 }
 
-export default connect(null, mapDispatchToProps)(SearchResultItem);
+export default connect(mapStateToProps, mapDispatchToProps)(SearchResultItem);
