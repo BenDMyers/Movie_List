@@ -9,7 +9,7 @@ const MovieItem = (props) => {
     const title = `${props.title} (${props.year})`;
     const poster = `https://image.tmdb.org/t/p/original${props.poster}?api_key=${tmdbKey}`;
     return (
-        <Card style={{width: '200px'}}>
+        <Card>
             <CardMedia component="img" src={poster} title={`Poster for ${title})`} />
             <CardContent>
                 {title}
@@ -18,4 +18,4 @@ const MovieItem = (props) => {
     );
 };
 
-export default MovieItem
+export default MovieItem;

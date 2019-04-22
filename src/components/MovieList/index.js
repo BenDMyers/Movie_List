@@ -6,8 +6,7 @@ import chunk from '../../utils/chunk';
 import MovieListRow from './MovieListRow';
 
 const MovieList = (props) => {
-    // const movies = props.movies.map(movie => <li key={movie.id}><MovieItem {...movie} /></li>)
-    const rowContents = chunk(props.movies, 5);
+    const rowContents = chunk(props.movies, 4);
     const rows = rowContents.map((row, index) => (
         <Grid key={index} container item xs={12} spacing={24}>
             <MovieListRow contents={row} />

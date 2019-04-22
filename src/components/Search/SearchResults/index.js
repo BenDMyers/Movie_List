@@ -1,5 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import Grid from '@material-ui/core/Grid';
+
+import SearchResultItem from './SearchResultItem';
 
 const SearchResults = (props) => {
     if(props.loading) {
@@ -8,12 +11,16 @@ const SearchResults = (props) => {
         return <p>No movies found</p>;
     }
 
-    const results = props.results.map((movie) => <li key={movie.id}>{movie.title}</li>);
+    const results = props.results.map((movie) => (
+        <Grid item xs={2} key={movie.id}>
+            <SearchResultItem {...movie} />
+        </Grid>
+    ));
 
     return (
-        <ul className="search-results">
+        <Grid container item xs={12} spacing={24}>
             {results}
-        </ul>
+        </Grid>
     );
 };
 
