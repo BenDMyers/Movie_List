@@ -6,9 +6,9 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 
 import {tmdbKey} from '../../../config/keys';
+import determineList from '../../../utils/determineList';
 import {recommend} from '../../../actions/moviesActions';
-
-const LIST_NAMES = ['inflight', 'recommended', 'watched', 'alreadyWatched'];
+import Frame from './SearchResultItemFrame';
 
 const SearchResultItem = (props) => {
     const handleClick = () => {props.recommend(props.id, props.dispatch);};
@@ -19,7 +19,7 @@ const SearchResultItem = (props) => {
         <Card>
             <CardMedia component="img" src={poster} alt={`Poster for ${title}`} />
             <CardContent>
-                {title}
+                <i>{props.title}</i> ({props.release_date.split('-')[0]})
             </CardContent>
         </Card>
     );
@@ -30,28 +30,22 @@ const SearchResultItem = (props) => {
                 {movieItem}
             </ButtonBase>
         );
+    } else {
+        movieItem = (
+            <Frame currentList={props.currentList}>
+                {movieItem}
+            </Frame>
+        );
     }
 
     return movieItem;
 };
 
-const determineList = (id, lists) => {
-    let list;
-    lists.forEach((currentList, index) => {
-        if(!list && currentList.find(mov => mov.id == id)) {
-            list = index;
-        }});
-    return list;
-}
 
 const mapStateToProps = (state, ownProps) => {
-    const {recommended, watched, alreadyWatched} = state.movies;
-    const inflight = state.inflight || [];
-    const allTheLists = [inflight, recommended, watched, alreadyWatched];
-    let currentList = determineList(ownProps.id, allTheLists);
 
     return {
-        currentList: currentList && LIST_NAMES[currentList]
+        currentList: determineList(state.movies, (mov) => mov.id == ownProps.id)
     };
 }
 
