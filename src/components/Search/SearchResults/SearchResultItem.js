@@ -7,7 +7,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 
 import {tmdbKey} from '../../../config/keys';
 import determineList from '../../../utils/determineList';
-import {recommend} from '../../../actions/moviesActions';
+import {recommend} from '../../../actions/inflightActions';
 import Frame from './SearchResultItemFrame';
 
 const SearchResultItem = (props) => {
@@ -43,9 +43,9 @@ const SearchResultItem = (props) => {
 
 
 const mapStateToProps = (state, ownProps) => {
-
+    const lists = {...state.movies, inflight: state.inflight.movies};
     return {
-        currentList: determineList(state.movies, (mov) => mov.id == ownProps.id)
+        currentList: determineList(lists, (mov) => mov.id == ownProps.id)
     };
 }
 

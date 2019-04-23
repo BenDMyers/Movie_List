@@ -4,6 +4,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 
 import {tmdbKey} from '../../config/keys';
+import VoteButton from './VoteButton';
 
 const MovieItem = (props) => {
     const title = `${props.title} (${props.year})`;
@@ -13,6 +14,7 @@ const MovieItem = (props) => {
             <CardMedia component="img" src={poster} alt={`Poster for ${title}`} />
             <CardContent>
                 {title}
+                <VoteButton />
             </CardContent>
         </Card>
     );
