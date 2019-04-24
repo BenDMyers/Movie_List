@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 
 import './App.css';
-import {getMovies} from './actions/moviesActions';
+import {getMovies, TRIGGER_SORT} from './actions/moviesActions';
 import {setUser} from './actions/userActions';
 import MovieList from './components/MovieList';
 import Search from './components/Search';
@@ -10,7 +10,7 @@ import {sortByVotesThenTitle} from './utils/comparators';
 
 class App extends Component {
     componentDidMount() {
-        this.props.getMovies();
+        this.props.getMovies(TRIGGER_SORT);
         this.props.setUser();
     }
 

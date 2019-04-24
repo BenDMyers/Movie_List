@@ -30,3 +30,14 @@ export const sortByTitle = generateComparator(a => a.title);
 
 /**** COMPOSED COMPARATORS *****/
 export const sortByVotesThenTitle = composeComparators(sortByVotesLength, sortByTitle);
+
+/**** MAINTAIN ORDER *****/
+export const maintainOrder = (originalOrder) => {
+    const index = (element) => {
+        return originalOrder.findIndex((originalElement) => {
+            return originalElement._id === element._id;
+        });
+    };
+
+    return generateComparator(element => index(element));
+}

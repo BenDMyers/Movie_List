@@ -21,9 +21,7 @@ const MovieList = (props) => {
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        movies: ownProps.comparator ?
-            [...state.movies[ownProps.list]].sort(ownProps.comparator)
-            : state.movies[ownProps.list]
+        movies: state.movies[ownProps.list]
     };
 };
 
