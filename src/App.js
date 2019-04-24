@@ -6,6 +6,7 @@ import {getMovies} from './actions/moviesActions';
 import {setUser} from './actions/userActions';
 import MovieList from './components/MovieList';
 import Search from './components/Search';
+import {sortByVotesThenTitle} from './utils/comparators';
 
 class App extends Component {
     componentDidMount() {
@@ -19,7 +20,7 @@ class App extends Component {
                 <Search />
                 <div>
                     <h2>Vote on Movies for Ben to Watch Next</h2>
-                    <MovieList list="recommended" />
+                    <MovieList list="recommended" comparator={sortByVotesThenTitle} />
                 </div>
                 <hr />
                 <div>

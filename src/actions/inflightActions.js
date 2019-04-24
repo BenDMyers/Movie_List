@@ -1,5 +1,4 @@
 import axios from 'axios';
-import {setUser} from './userActions';
 
 import {RECOMMEND_MOVIE, RESOLVE_INFLIGHT_MOVIE, RESOLVE_INFLIGHT_UNVOTE, RESOLVE_INFLIGHT_VOTE, UNVOTE, VOTE} from '../actions/types';
 import {getMovies} from './moviesActions';
