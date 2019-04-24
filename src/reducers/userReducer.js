@@ -1,10 +1,9 @@
-import {getCookie} from 'redux-cookie';
-
 import {SET_USER} from '../actions/types';
 
-export const userReducer = (state=getCookie('BEN_MOVIES'), action) => {
+export const userReducer = (state='', action) => {
     switch(action.type) {
         case SET_USER:
+            if(state) {return state;}
             return action.payload;
         default:
             return state;

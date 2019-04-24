@@ -3,13 +3,21 @@ import {GET_MOVIES} from '../actions/types';
 const DEFAULT_STATE = {
     alreadyWatched: [],
     recommended: [],
-    watched: []
+    watched: [],
+    all: []
 }
 
 export const moviesReducer = (state=DEFAULT_STATE, action) => {
     switch(action.type) {
         case GET_MOVIES:
-            return {...DEFAULT_STATE, ...action.payload.data};
+            // Combine all lists in response into one big list
+            let all = [];
+            if(action.payload.data) {
+                all = Object.values(action.payload.data).reduce((acc, cur) => {
+                    return acc = [...acc, ...cur];
+                }, [])
+            }
+            return {...DEFAULT_STATE, ...action.payload.data, all};
         default:
             return state;
     }

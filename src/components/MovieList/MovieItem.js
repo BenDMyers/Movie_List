@@ -14,7 +14,7 @@ const MovieItem = (props) => {
             <CardMedia component="img" src={poster} alt={`Poster for ${title}`} />
             <CardContent>
                 {title}
-                <VoteButton />
+                <VoteButton movie={props._id} />
             </CardContent>
         </Card>
     );

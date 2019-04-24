@@ -3,12 +3,14 @@ import {connect} from 'react-redux';
 
 import './App.css';
 import {getMovies} from './actions/moviesActions';
+import {setUser} from './actions/userActions';
 import MovieList from './components/MovieList';
 import Search from './components/Search';
 
 class App extends Component {
     componentDidMount() {
         this.props.getMovies();
+        this.props.setUser();
     }
 
     render() {
@@ -34,4 +36,4 @@ class App extends Component {
     }
 }
 
-export default connect(null, {getMovies})(App);
+export default connect(null, {getMovies, setUser})(App);
