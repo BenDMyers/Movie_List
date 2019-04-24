@@ -20,7 +20,6 @@ export const recommend = (id, dispatch) => {
     dispatch({type: RECOMMEND_MOVIE, payload: id});
     axios.post('https://bdm-watchlist-api.herokuapp.com/movies/', {id})
         .then((res) => {
-            console.log(res);
             dispatch(getMovies());
             dispatch(resolveInflightMovie(id));
         }).catch(err => {
@@ -42,11 +41,9 @@ export const vote = (movieId, dispatch, uuid) => {
 };
 
 export const unvote = (movieId, dispatch, uuid) => {
-    console.log(uuid)
     dispatch({type: UNVOTE, payload: movieId});
     axios.delete(`https://bdm-watchlist-api.herokuapp.com/movies/${movieId}/votes`, {data: {uuid}})
         .then((res) => {
-            console.log(res);
             dispatch(getMovies());
             dispatch(resolveInflightUnvote(movieId));
         }).catch(err => {
