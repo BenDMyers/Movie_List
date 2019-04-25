@@ -3,7 +3,8 @@ import {CLEAR_SEARCH, SET_SEARCH_RESULTS_SPINNER, UPDATE_SEARCH_QUERY, UPDATE_SE
 const DEFAULT_STATE = {
     loading: false,
     query: '',
-    results: []
+    results: [],
+    ghostResults: []
 };
 
 const RESULTS_TO_SHOW = 5;
@@ -11,7 +12,7 @@ const RESULTS_TO_SHOW = 5;
 const searchReducer = (state=DEFAULT_STATE, action) => {
     switch(action.type) {
         case CLEAR_SEARCH:
-            return {...DEFAULT_STATE};
+            return {...DEFAULT_STATE, ghostResults: [...state.results]};
         case SET_SEARCH_RESULTS_SPINNER:
             if(state.loading) {return {...state, loading: 'spin'};}
             return state;
@@ -19,7 +20,8 @@ const searchReducer = (state=DEFAULT_STATE, action) => {
             return {
                 ...state,
                 loading: true,
-                query: action.payload
+                query: action.payload,
+                ghostResults: []
             };
         case UPDATE_SEARCH_RESULTS:
             return {

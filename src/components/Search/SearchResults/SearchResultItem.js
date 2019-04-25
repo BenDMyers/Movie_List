@@ -36,13 +36,13 @@ const SearchResultItem = (props) => {
                 {movieItem}
             </ButtonBase>
         );
-    } else {
+    } /*else {
         movieItem = (
             <Frame currentList={props.currentList}>
                 {movieItem}
             </Frame>
         );
-    }
+    }*/
 
     return movieItem;
 };

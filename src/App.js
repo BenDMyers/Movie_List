@@ -3,9 +3,9 @@ import {connect} from 'react-redux';
 
 import {getMovies, TRIGGER_SORT} from './actions/moviesActions';
 import {setUser} from './actions/userActions';
+import HeadingBar from './components/layout/HeadingBar';
 import MovieList from './components/MovieList';
 import Search from './components/Search';
-import {sortByVotesThenTitle} from './utils/comparators';
 
 class App extends Component {
     componentDidMount() {
@@ -16,19 +16,24 @@ class App extends Component {
     render() {
         return (
             <div>
+                <HeadingBar as="h1">What Should Ben Watch Next?</HeadingBar>
                 <Search />
                 <div>
-                    <h2>Vote on Movies for Ben to Watch Next</h2>
-                    <MovieList list="recommended" comparator={sortByVotesThenTitle} />
+                    <HeadingBar as="h2" backgroundColor="#3f51b5" style={{marginBottom: '20px'}}>
+                        Vote on movies
+                    </HeadingBar>
+                    <MovieList list="recommended" />
                 </div>
-                <hr />
                 <div>
-                    <h2>Ben Has Now Watched...</h2>
+                    <HeadingBar as="h2" backgroundColor="green" style={{marginTop: '10px', marginBottom: '20px'}} subtitle="Thank you for your recommendations">
+                        Ben has now seen...
+                    </HeadingBar>
                     <MovieList list="watched" />
                 </div>
-                <hr />
                 <div>
-                    <h2>Ben Has Already Watched...</h2>
+                    <HeadingBar as="h2" backgroundColor="darkviolet" style={{marginTop: '10px', marginBottom: '20px'}} subtitle="But thank you anyways!">
+                        Ben has already watched...
+                    </HeadingBar>
                     <MovieList list="alreadyWatched" />
                 </div>
             </div>

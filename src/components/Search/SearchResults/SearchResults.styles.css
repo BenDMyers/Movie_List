@@ -1,0 +1,13 @@
+div.search-contents {
+    background-color: #444;
+}
+
+div.search-message {
+    height: 100px;
+    color: #eee;
+    text-align: center;
+    vertical-align: middle;
+    margin: 0 auto;
+    font-family: 'Montserrat', sans-serif;
+    line-height: 100px;
+}
