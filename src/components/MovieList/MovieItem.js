@@ -17,8 +17,8 @@ const MovieItem = (props) => {
     const title = `${props.title} (${props.year})`;
     const poster = `https://image.tmdb.org/t/p/original${props.poster}?api_key=${tmdbKey}`;
     return (
-        <Card>
-            <CardMedia component="img" src={poster} alt={`Poster for ${title}`} />
+        <Card style={{backgroundColor: '#fbfbfb'}}>
+            <CardMedia className="card-movie-poster" component="img" src={poster} alt={`Poster for ${title}`} />
             <span className="screenreader">{title}</span>
             <CardContent aria-hidden="true" className="card-movie">
                 <div className="card-movie-title">

@@ -17,9 +17,15 @@ const SearchResultItem = (props) => {
 
     let movieItem = (
         <Card>
-            <CardMedia component="img" src={poster} alt={`Poster for ${title}`} />
-            <CardContent>
-                <i>{props.title}</i> ({props.release_date.split('-')[0]})
+            <CardMedia className="card-movie-poster" component="img" src={poster} alt={`Poster for ${title}`} />
+            <span className="screenreader">{title}</span>
+            <CardContent aria-hidden="true" className="card-movie">
+                <div className="card-movie-title">
+                    {props.title}
+                </div>
+                <div aria-hidden="true" className="card-movie-year">
+                    {props.release_date.split('-')[0]}
+                </div>
             </CardContent>
         </Card>
     );
