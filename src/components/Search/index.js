@@ -5,7 +5,7 @@ import SearchResults from './SearchResults';
 
 const Search = () => {
     return (
-        <div>
+        <div className="search-area">
             <SearchBar />
             <SearchResults />
         </div>
