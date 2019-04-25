@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 
-import './App.css';
 import {getMovies, TRIGGER_SORT} from './actions/moviesActions';
 import {setUser} from './actions/userActions';
 import MovieList from './components/MovieList';

@@ -4,6 +4,7 @@ import {Button, Label, Ref} from 'semantic-ui-react';
 import MaterialButton from '@material-ui/core/Button';
 import 'semantic-ui-css/semantic.min.css';
 
+import './VoteButton.styles.css';
 import {vote, unvote} from '../../actions/inflightActions';
 
 const VoteButton = (props) => {
@@ -23,25 +24,22 @@ const VoteButton = (props) => {
         if (node !== null) {setHeight(node.getBoundingClientRect().height);}
     }, []);
 
-    const style = {
-        height: `${height}px`,
-        display: 'inline-flex',
-        alignItems: 'center',
-        padding: '0'
+    const buttonStyle = {
+        height: `${height}px`
     };
 
-    let buttonProps = {variant: 'contained', style, onClick: handleClick};
+    let buttonProps = {variant: 'contained', style: buttonStyle, onClick: handleClick};
     if(!props.userHasAlreadyVoted) {buttonProps.color = 'primary';};
 
     let callToAction = props.userHasAlreadyVoted ? 'Unvote' : 'Vote';
 
     return (
-        <Button as='div' labelPosition="right">
+        <Button as='div' labelPosition="right" className="vote-button">
             <MaterialButton {...buttonProps}>
                 {callToAction}
             </MaterialButton>
             <Ref innerRef={measuredRef}>
-                <Label pointing="left">
+                <Label basic className="vote-count" pointing="left">
                     {props.numVotes}
                 </Label>
             </Ref>

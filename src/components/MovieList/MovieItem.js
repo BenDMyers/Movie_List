@@ -1,10 +1,17 @@
 import React from 'react';
 import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 
 import {tmdbKey} from '../../config/keys';
 import VoteButton from './VoteButton';
+
+const cardActionsStyles = {
+    justifyContent: 'center',
+    paddingTop: 0,
+    paddingBottom: '16px'
+};
 
 const MovieItem = (props) => {
     const title = `${props.title} (${props.year})`;
@@ -12,10 +19,18 @@ const MovieItem = (props) => {
     return (
         <Card>
             <CardMedia component="img" src={poster} alt={`Poster for ${title}`} />
-            <CardContent>
-                {title}
-                <VoteButton movie={props._id} />
+            <span className="screenreader">{title}</span>
+            <CardContent aria-hidden="true" className="card-movie">
+                <div className="card-movie-title">
+                    {props.title}
+                </div>
+                <div aria-hidden="true" className="card-movie-year">
+                    {props.year}
+                </div>
             </CardContent>
+            <CardActions style={cardActionsStyles}>
+                <VoteButton movie={props._id} />
+            </CardActions>
         </Card>
     );
 };

@@ -1,0 +1,18 @@
+.vote-button {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.vote-button button {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    padding-left: 10px;
+    padding-right: 10px;
+    display: inline-flex;
+    align-items: center;
+    width: 80px;
+}
+
+div.ui.basic.label.vote-count {
+    font-family: 'Montserrat', sans-serif;
+    box-shadow: 1px 1px 2px 0px rgba(0,0,0,0.1), 1px 2px 1px 0px rgba(0,0,0,0.14), 0px 3px 1px -2px rgba(0,0,0,0.12)
+}

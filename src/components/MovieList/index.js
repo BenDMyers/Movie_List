@@ -5,6 +5,12 @@ import Grid from '@material-ui/core/Grid';
 import chunk from '../../utils/chunk';
 import MovieListRow from './MovieListRow';
 
+const style = {
+    marginLeft: '10%',
+    marginRight: '10%',
+    width: '100%'
+}
+
 const MovieList = (props) => {
     const rowContents = chunk(props.movies, 5);
     const rows = rowContents.map((row, index) => (
@@ -13,7 +19,7 @@ const MovieList = (props) => {
         </Grid>
     ));
     return (
-        <Grid container spacing={8}>
+        <Grid container spacing={8} style={style}>
             {rows}
         </Grid>
     );

@@ -12,3 +12,38 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.screenreader {
+    border: 0;
+    clip: rect(1px, 1px, 1px, 1px);
+    clip-path: inset(50%);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+    word-wrap: normal;
+}
+
+.card-movie {
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    height: 100px;
+    /* display: inline-block; */
+    /* vertical-align: middle; */
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.card-movie-title {
+    font-size: 140%;
+    font-style: italic;
+    font-weight: 800;
+}
+
+.card-movie-year {
+    font-weight: 700;
+    color: #555;
+}
