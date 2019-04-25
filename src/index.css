@@ -51,3 +51,15 @@ img.card-movie-poster {
     font-weight: 700;
     color: #555;
 }
+
+div.movie-list-spinner {
+    height: 100px;
+    margin: 0 auto;
+    width: 1%;
+    vertical-align: middle;
+    padding-top: 20px;
+}
+
+.movie-list-spinner svg {
+    color: #777;
+}

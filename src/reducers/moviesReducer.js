@@ -5,7 +5,8 @@ const DEFAULT_STATE = {
     alreadyWatched: [],
     recommended: [],
     watched: [],
-    all: []
+    all: [],
+    initialLoad: true
 }
 
 export const moviesReducer = (state=DEFAULT_STATE, action) => {
@@ -21,7 +22,7 @@ export const moviesReducer = (state=DEFAULT_STATE, action) => {
                 action.meta.triggerSort && action.payload.data.recommended.sort(sortByVotesThenTitle);
                 action.meta.maintainOrder && action.payload.data.recommended.sort(maintainOrder([...state.recommended]));
             }
-            return {...DEFAULT_STATE, ...action.payload.data, all};
+            return {...DEFAULT_STATE, ...action.payload.data, all, initialLoad: false};
         default:
             return state;
     }
