@@ -3,7 +3,7 @@ import axios from 'axios';
 import {RECOMMEND_MOVIE, RESOLVE_INFLIGHT_MOVIE, RESOLVE_INFLIGHT_UNVOTE, RESOLVE_INFLIGHT_VOTE, UNVOTE, VOTE} from '../actions/types';
 import {getMovies, TRIGGER_SORT, MAINTAIN_ORDER} from './moviesActions';
 
-const BASE_URL = 'https://bdm-watchlist-ui.herokuapp.com';
+const BASE_URL = 'https://bdm-watchlist-api.herokuapp.com';
 // const BASE_URL = 'http://localhost:4000';
 
 export const resolveInflightMovie = (id) => {
@@ -20,7 +20,7 @@ export const resolveInflightUnvote = (id) => {
 
 export const recommend = (id, dispatch) => {
     dispatch({type: RECOMMEND_MOVIE, payload: id});
-    axios.post('https://bdm-watchlist-api.herokuapp.com/movies/', {id})
+    axios.post(`${BASE_URL}/movies/`, {id})
         .then((res) => {
             dispatch(getMovies(TRIGGER_SORT));
             dispatch(resolveInflightMovie(id));
