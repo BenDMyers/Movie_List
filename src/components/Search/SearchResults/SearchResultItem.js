@@ -27,7 +27,7 @@ const SearchResultItem = (props) => {
     }
 
     let movieItem = (
-        <Card>
+        <Card style={{marginBottom: '20px'}}>
             <CardMedia {...posterProps} />
             <span className="screenreader">{title}</span>
             <CardContent aria-hidden="true" className="card-movie">

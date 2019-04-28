@@ -1,15 +1,25 @@
 import React from 'react';
+import {compose} from 'redux';
 import {connect} from 'react-redux';
 import Grid from '@material-ui/core/Grid';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import withWidth from '@material-ui/core/withWidth';
 
 import chunk from '../../utils/chunk';
 import MovieListRow from './MovieListRow';
 
-const style = {
-    marginLeft: '10%',
-    marginRight: '10%',
-    width: '100%'
+const getStyle = (width) => {
+    switch(width) {
+        case 'xs':
+        case 'sm':
+            return {margin: '0 auto', textAlign: 'center'};
+        case 'md':
+        case 'lg':
+        case 'xl':
+            return {marginLeft: '10%', marginRight: '10%', width: '100%'};
+        default:
+            return {width: '100%'};
+    }
 }
 
 const MovieList = (props) => {
@@ -27,7 +37,7 @@ const MovieList = (props) => {
     ));
 
     return (
-        <Grid container spacing={8} style={style}>
+        <Grid container spacing={8} style={getStyle(props.width)}>
             {rows}
         </Grid>
     );
@@ -40,4 +50,7 @@ const mapStateToProps = (state, ownProps) => {
     };
 };
 
-export default connect(mapStateToProps)(MovieList);
+export default compose(
+    withWidth(),
+    connect(mapStateToProps)
+)(MovieList);
