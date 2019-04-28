@@ -28,7 +28,7 @@ const SearchResults = (props) => {
         let results = props.query ? props.results : props.ghostResults;
         console.log(props.query, results);
         const resultCards = results.map((movie) => (
-            <Grid item xs={2} key={movie.id}>
+            <Grid item xs={8} sm={4} md={2} key={movie.id}>
                 <SearchResultItem {...movie} />
             </Grid>
         ));
