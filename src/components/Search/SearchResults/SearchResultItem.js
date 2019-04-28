@@ -13,11 +13,22 @@ import Frame from './SearchResultItemFrame';
 const SearchResultItem = (props) => {
     const handleClick = () => {props.recommend(props.id, props.dispatch);};
     const title = `${props.title} (${props.release_date.split('-')[0]})`;
-    const poster = `https://image.tmdb.org/t/p/original${props.poster_path}?api_key=${tmdbKey}`;
+
+    const posterProps = {
+        className: 'card-movie-poster',
+        component: 'img'
+    };
+    if(props.poster_path) {
+        posterProps.src = `https://image.tmdb.org/t/p/original${props.poster_path}?api_key=${tmdbKey}`;
+        posterProps.alt = `Poster for ${title}`;
+    } else {
+        posterProps.src = 'placeholderPoster.png';
+        posterProps.alt = 'Placeholder for poster';
+    }
 
     let movieItem = (
         <Card>
-            <CardMedia className="card-movie-poster" component="img" src={poster} alt={`Poster for ${title}`} />
+            <CardMedia {...posterProps} />
             <span className="screenreader">{title}</span>
             <CardContent aria-hidden="true" className="card-movie">
                 <div className="card-movie-title">

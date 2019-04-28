@@ -25,7 +25,6 @@ const getReceivedVotes = (numVotes, list) => {
 
 const MovieItem = (props) => {
     const title = `${props.title} (${props.year})`;
-    const poster = `https://image.tmdb.org/t/p/original${props.poster}?api_key=${tmdbKey}`;
 
     let votes;
     if(props.list === 'recommended') {
@@ -34,9 +33,21 @@ const MovieItem = (props) => {
         votes = getReceivedVotes(props.numVotes, props.list);
     }
 
+    const posterProps = {
+        className: 'card-movie-poster',
+        component: 'img'
+    };
+    if(props.poster) {
+        posterProps.src = `https://image.tmdb.org/t/p/original${props.poster}?api_key=${tmdbKey}`;
+        posterProps.alt = `Poster for ${title}`;
+    } else {
+        posterProps.src = 'placeholderPoster.png';
+        posterProps.alt = 'Placeholder for poster';
+    }
+
     return (
         <Card style={{backgroundColor: '#fbfbfb', marginBottom: '20px'}}>
-            <CardMedia className="card-movie-poster" component="img" src={poster} alt={`Poster for ${title}`} />
+            <CardMedia {...posterProps} />
             <span className="screenreader">{title}</span>
             <CardContent aria-hidden="true" className="card-movie">
                 <div className="card-movie-title">
