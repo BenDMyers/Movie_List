@@ -9,11 +9,7 @@ import {vote, unvote} from '../../actions/inflightActions';
 
 const VoteButton = (props) => {
     const handleClick = () => {
-        if(props.userHasAlreadyVoted) {
-            props.unvote(props.movie, props.dispatch, props.uuid);
-        } else {
-            props.vote(props.movie, props.dispatch, props.uuid);
-        }
+        props.userHasAlreadyVoted ? props.unvote(props.movie) : props.vote(props.movie);
     };
 
     // Height measurement using ref hooks courtesy of
@@ -56,8 +52,4 @@ const mapStateToProps = (state, ownProps) => {
     };
 };
 
-const mapDispatchToProps = (dispatch) => {
-    return {dispatch, vote, unvote};
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(VoteButton);
+export default connect(mapStateToProps, {vote, unvote})(VoteButton);
