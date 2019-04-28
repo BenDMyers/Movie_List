@@ -52,6 +52,19 @@ img.card-movie-poster {
     color: #555;
 }
 
+.received-votes {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+}
+
+.received-votes .received-votes-watched {
+    color: green;
+}
+
+.received-votes .received-votes-alreadyWatched {
+    color: darkviolet;
+}
+
 div.movie-list-spinner {
     height: 100px;
     margin: 0 auto;

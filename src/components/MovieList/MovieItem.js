@@ -13,9 +13,27 @@ const cardActionsStyles = {
     paddingBottom: '16px'
 };
 
+const getReceivedVotes = (numVotes, list) => {
+    let voteOrVotes = numVotes === 1 ? 'vote' : 'votes';
+    return (
+        <>
+            <span className="screenreader">Received {numVotes} {voteOrVotes}</span>
+            <span aria-hidden="true" className="received-votes">Received <span className={`received-votes-${list}`}>{numVotes} {voteOrVotes}</span></span>
+        </>
+    );
+}
+
 const MovieItem = (props) => {
     const title = `${props.title} (${props.year})`;
     const poster = `https://image.tmdb.org/t/p/original${props.poster}?api_key=${tmdbKey}`;
+
+    let votes;
+    if(props.list === 'recommended') {
+        votes = <VoteButton movie={props._id} />;
+    } else {
+        votes = getReceivedVotes(props.numVotes, props.list);
+    }
+
     return (
         <Card style={{backgroundColor: '#fbfbfb', marginBottom: '20px'}}>
             <CardMedia className="card-movie-poster" component="img" src={poster} alt={`Poster for ${title}`} />
@@ -29,7 +47,7 @@ const MovieItem = (props) => {
                 </div>
             </CardContent>
             <CardActions style={cardActionsStyles}>
-                <VoteButton movie={props._id} />
+                {votes}
             </CardActions>
         </Card>
     );
