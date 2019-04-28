@@ -25,11 +25,11 @@ export const composeComparators = (initialComparator, ...rest) => {
 }
 
 /**** BASIC COMPARATORS *****/
-export const sortByVotesLength = generateComparator(a => a.votes.length, DESCENDING);
-export const sortByTitle = generateComparator(a => a.title);
+export const sortByNumVotes = generateComparator(a => a.numVotes, DESCENDING);
+export const sortByTitle = generateComparator(a => a.title.toLowerCase());
 
 /**** COMPOSED COMPARATORS *****/
-export const sortByVotesThenTitle = composeComparators(sortByVotesLength, sortByTitle);
+export const sortByVotesThenTitle = composeComparators(sortByNumVotes, sortByTitle);
 
 /**** MAINTAIN ORDER *****/
 export const maintainOrder = (originalOrder) => {

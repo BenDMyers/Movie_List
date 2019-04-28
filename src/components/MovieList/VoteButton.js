@@ -48,10 +48,10 @@ const VoteButton = (props) => {
 };
 
 const mapStateToProps = (state, ownProps) => {
-    const {votes} = state.movies.all.filter(m => m._id === ownProps.movie)[0];
+    const {numVotes, userHasAlreadyVoted} = state.movies.all.filter(m => m._id === ownProps.movie)[0];
     return {
-        numVotes: `${votes.length}`,
-        userHasAlreadyVoted: votes.includes(state.user),
+        numVotes,
+        userHasAlreadyVoted,
         uuid: state.user
     };
 };

@@ -9,8 +9,8 @@ import Search from './components/Search';
 
 class App extends Component {
     componentDidMount() {
-        this.props.getMovies(TRIGGER_SORT);
         this.props.setUser();
+        this.props.getMovies(TRIGGER_SORT);
     }
 
     render() {
