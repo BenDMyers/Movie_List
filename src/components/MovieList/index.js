@@ -20,6 +20,21 @@ const getStyle = (width) => {
         default:
             return {width: '100%'};
     }
+};
+
+const getChunkSize = (width) => {
+    switch(width) {
+        case 'xs':
+            return 1;
+        case 'sm':
+            return 3;
+        case 'md':
+        case 'lg':
+        case 'xl':
+            return 5;
+        default:
+            return 1;
+    }
 }
 
 const MovieList = (props) => {
@@ -29,7 +44,7 @@ const MovieList = (props) => {
     }
 
     // Create rows
-    const rowContents = chunk(props.movies, 5);
+    const rowContents = chunk(props.movies, getChunkSize(props.width));
     const rows = rowContents.map((row, index) => (
         <Grid key={index} container item xs={12} spacing={24}>
             <MovieListRow contents={row} />
