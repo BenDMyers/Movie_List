@@ -25,13 +25,13 @@ class App extends Component {
                     <MovieList list="recommended" />
                 </div>
                 <div>
-                    <HeadingBar as="h2" backgroundColor="green" style={{marginTop: '10px', marginBottom: '20px'}} subtitle="Thank you for your recommendations">
+                    <HeadingBar as="h2" backgroundColor="#006200" style={{marginTop: '10px', marginBottom: '20px'}} subtitle="Thank you for your recommendations">
                         Ben has now seen...
                     </HeadingBar>
                     <MovieList list="watched" />
                 </div>
                 <div>
-                    <HeadingBar as="h2" backgroundColor="darkviolet" style={{marginTop: '10px', marginBottom: '20px'}} subtitle="But thank you anyways!">
+                    <HeadingBar as="h2" backgroundColor="#9400d3" style={{marginTop: '10px', marginBottom: '20px'}} subtitle="But thank you anyways!">
                         Ben has already watched...
                     </HeadingBar>
                     <MovieList list="alreadyWatched" />
