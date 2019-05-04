@@ -2,16 +2,20 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {compose} from 'redux';
 import TextField from '@material-ui/core/TextField';
+import Icon from '@material-ui/core/Icon';
 import InputAdornment from '@material-ui/core/InputAdornment';
-import SearchIcon from '@material-ui/icons/Search';
 import {withStyles} from '@material-ui/core/styles';
 
+import './searchBar.styles.css';
 import {updateSearchQuery} from '../../../actions/searchActions';
 
 const styles = theme => ({
     cssUnderline: {
+        '&': {
+            borderBottom: '2px solid black'
+        },
         '&:after': {
-            borderBottomColor: 'black',
+            borderBottom: '3px solid black'
         },
     },
 });
@@ -26,10 +30,13 @@ const SearchBar = (props) => {
 
     return (
         <form className="search-bar" noValidate autoComplete="off">
+            <label htmlFor="movie-search">
+                <span className="screenreader">Recommend Movies</span>
+                <span aria-hidden="true" className="search-label">Recommend Movies</span>
+            </label>
             <TextField
                 className="search-bar-input"
                 id="movie-search"
-                label="Search for a movie..."
                 margin="normal"
                 onChange={handleSearch}
                 InputProps={{
@@ -38,7 +45,7 @@ const SearchBar = (props) => {
                     },
                     startAdornment: (
                         <InputAdornment position="start">
-                            <SearchIcon />
+                            <Icon id="search-icon" className="fa fa-search" />
                         </InputAdornment>
                     ),
                 }}
