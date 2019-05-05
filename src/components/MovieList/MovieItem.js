@@ -4,8 +4,10 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 
+import './watchedMovieRibbon.styles.css';
 import {tmdbKey} from '../../config/keys';
 import VoteButton from './VoteButton';
+import WatchedMovieRibbon from './WatchedMovieRibbon';
 
 const cardActionsStyles = {
     justifyContent: 'center',
@@ -46,21 +48,26 @@ const MovieItem = (props) => {
     }
 
     return (
-        <Card style={{backgroundColor: '#fbfbfb', marginBottom: '20px'}}>
-            <CardMedia {...posterProps} />
-            <span className="screenreader">{title}</span>
-            <CardContent aria-hidden="true" className="card-movie">
-                <div className="card-movie-title">
-                    {props.title}
+        <div style={{position: 'relative'}}>
+            <Card style={{backgroundColor: '#fbfbfb', marginBottom: '20px'}}>
+                <div className="movie-poster-container">
+                    <CardMedia {...posterProps} />
+                    {props.list === 'watched' && <WatchedMovieRibbon date={props.updatedDate} />}
                 </div>
-                <div aria-hidden="true" className="card-movie-year">
-                    {props.year}
-                </div>
-            </CardContent>
-            <CardActions style={cardActionsStyles}>
-                {votes}
-            </CardActions>
-        </Card>
+                <span className="screenreader">{title}</span>
+                <CardContent aria-hidden="true" className="card-movie">
+                    <div className="card-movie-title">
+                        {props.title}
+                    </div>
+                    <div aria-hidden="true" className="card-movie-year">
+                        {props.year}
+                    </div>
+                </CardContent>
+                <CardActions style={cardActionsStyles}>
+                    {votes}
+                </CardActions>
+            </Card>
+        </div>
     );
 };
 

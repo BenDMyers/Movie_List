@@ -1,0 +1,17 @@
+div.movie-poster-container {
+    display: inline-flex;
+}
+
+div.ui.ribbon.label.watched-movie-ribbon.green {
+    position: absolute;
+    top: 20px;
+    left: calc(100% + 1.2em);
+    right: 0px;
+    padding-right: 1.2em;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #008000 !important;
+}
+
+div.ui.ribbon.label.watched-movie-ribbon.green::after {
+    border-top-color: #006200 !important;
+}
