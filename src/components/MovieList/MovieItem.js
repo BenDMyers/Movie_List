@@ -49,10 +49,10 @@ const MovieItem = (props) => {
 
     return (
         <div style={{position: 'relative'}}>
-            <Card style={{backgroundColor: '#fbfbfb', marginBottom: '20px'}}>
+            <Card id={`movie-${props._id}`} style={{backgroundColor: '#fbfbfb', marginBottom: '20px'}}>
                 <div className="movie-poster-container">
                     <CardMedia {...posterProps} />
-                    {props.list === 'watched' && <WatchedMovieRibbon date={props.updatedDate} />}
+                    {props.list === 'watched' && <WatchedMovieRibbon date={props.updatedDate} describes={props._id} />}
                 </div>
                 <span className="screenreader">{title}</span>
                 <CardContent aria-hidden="true" className="card-movie">

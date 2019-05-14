@@ -4166,6 +4166,10 @@ gauge@~2.7.3:
     strip-ansi "^3.0.1"
     wide-align "^1.1.0"
 
+generate-comparators@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/generate-comparators/-/generate-comparators-1.0.0.tgz#b7387a4d439dff17093c379ca1be0cebb4c67510"
+
 get-caller-file@^1.0.1:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/get-caller-file/-/get-caller-file-1.0.3.tgz#f978fa4c90d1dfe7ff2d6beda2a515e713bdcf4a"
