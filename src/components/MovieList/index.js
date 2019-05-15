@@ -59,8 +59,14 @@ const MovieList = (props) => {
 };
 
 const mapStateToProps = (state, ownProps) => {
+    let movies = state.movies[ownProps.list];
+    if(ownProps.comparator) {
+        movies = [...movies];
+        movies.sort(ownProps.comparator);
+    }
+
     return {
-        movies: state.movies[ownProps.list],
+        movies,
         initialLoad: state.movies.initialLoad
     };
 };

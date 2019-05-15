@@ -6,6 +6,7 @@ import {setUser} from './actions/userActions';
 import HeadingBar from './components/layout/HeadingBar';
 import MovieList from './components/MovieList';
 import Search from './components/Search';
+import {byTitle, byWatchedDate} from './utils/comparators';
 
 class App extends Component {
     componentDidMount() {
@@ -28,13 +29,13 @@ class App extends Component {
                     <HeadingBar as="h2" backgroundColor="#006200" style={{marginTop: '10px', marginBottom: '20px'}} subtitle="Thank you for your recommendations">
                         Ben has now seen...
                     </HeadingBar>
-                    <MovieList list="watched" />
+                    <MovieList list="watched" comparator={byWatchedDate.desc} />
                 </div>
                 <div>
                     <HeadingBar as="h2" backgroundColor="#9400d3" style={{marginTop: '10px', marginBottom: '20px'}} subtitle="But thank you anyways!">
                         Ben has already watched...
                     </HeadingBar>
-                    <MovieList list="alreadyWatched" />
+                    <MovieList list="alreadyWatched" comparator={byTitle.asc} />
                 </div>
             </div>
         );

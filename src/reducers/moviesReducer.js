@@ -1,5 +1,5 @@
 import {GET_MOVIES} from '../actions/types';
-import {sortByVotesThenTitle, maintainOrder} from '../utils/comparators';
+import {byVotesThenTitle, byPreviousOrder} from '../utils/comparators';
 
 const DEFAULT_STATE = {
     alreadyWatched: [],
@@ -19,8 +19,8 @@ export const moviesReducer = (state=DEFAULT_STATE, action) => {
                     return acc = [...acc, ...cur];
                 }, []);
 
-                action.meta.triggerSort && action.payload.data.recommended.sort(sortByVotesThenTitle);
-                action.meta.maintainOrder && action.payload.data.recommended.sort(maintainOrder([...state.recommended]));
+                action.meta.triggerSort && action.payload.data.recommended.sort(byVotesThenTitle.asc);
+                action.meta.maintainOrder && action.payload.data.recommended.sort(byPreviousOrder(state.recommended).asc);
             }
             return {...DEFAULT_STATE, ...action.payload.data, all, initialLoad: false};
         default:

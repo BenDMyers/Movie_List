@@ -1,43 +1,20 @@
-export const ASCENDING = 'ASCENDING';
-export const DESCENDING = 'DESCENDING';
-
-/**** COMPARATOR UTILS *****/
-export const generateComparator = (getComparedValue, direction=ASCENDING) => {
-    return (a, b, nextComparators) => {
-        let A = getComparedValue(a);
-        let B = getComparedValue(b);
-        if(A === B) {
-            // If there is another comparator to use, use that. Otherwise return 0.
-            return (nextComparators && nextComparators.length) ?
-                nextComparators[0](a, b, nextComparators.slice(0, 1))
-                : 0;
-        } else {
-            let comparison = (A < B) ? -1 : 1;
-            if(direction === DESCENDING) { comparison *= -1; }
-            return comparison;
-        }
-    };
-};
-
-export const composeComparators = (initialComparator, ...rest) => {
-    let comparators = [...rest];
-    return (a, b) => initialComparator(a, b, comparators);
-}
+import {comparators, composeComparators} from 'generate-comparators';
 
 /**** BASIC COMPARATORS *****/
-export const sortByNumVotes = generateComparator(a => a.numVotes, DESCENDING);
-export const sortByTitle = generateComparator(a => a.title.toLowerCase());
+export const byNumVotes = comparators(a => a.numVotes);
+export const byTitle = comparators(a => a.title.toLowerCase());
+export const byWatchedDate = comparators(a => a.updatedDate);
 
 /**** COMPOSED COMPARATORS *****/
-export const sortByVotesThenTitle = composeComparators(sortByNumVotes, sortByTitle);
+export const byVotesThenTitle = composeComparators(byNumVotes.desc, byTitle.asc);
 
 /**** MAINTAIN ORDER *****/
-export const maintainOrder = (originalOrder) => {
+export const byPreviousOrder = (originalOrder) => {
     const index = (element) => {
         return originalOrder.findIndex((originalElement) => {
             return originalElement._id === element._id;
         });
     };
 
-    return generateComparator(element => index(element));
+    return comparators(element => index(element));
 }
