@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 
 import {getMovies, TRIGGER_SORT} from './actions/moviesActions';
 import {setUser} from './actions/userActions';
+import DarkModeToggle from './components/layout/DarkModeToggle';
 import HeadingBar from './components/layout/HeadingBar';
 import MovieList from './components/MovieList';
 import Search from './components/Search';
@@ -17,6 +18,7 @@ class App extends Component {
     render() {
         return (
             <div>
+                <DarkModeToggle />
                 <HeadingBar as="h1">What Should Ben Watch Next?</HeadingBar>
                 <Search />
                 <div>
