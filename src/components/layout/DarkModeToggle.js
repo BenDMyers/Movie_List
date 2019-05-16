@@ -34,7 +34,6 @@ const styles = theme => ({
 
 const DarkModeToggle = (props) => {
     const darkMode = useDarkMode(false);
-    const {switchBase, bar, icon, iconChecked, checked} = props.classes;
 
     const moonLabel = (
         <span className="dark-mode-moon">
@@ -52,7 +51,7 @@ const DarkModeToggle = (props) => {
                 <Switch
                     checked={darkMode.value}
                     onChange={darkMode.toggle}
-                    classes={{switchBase, bar, icon, iconChecked, checked}}
+                    classes={props.classes}
                 />
             }
             label={moonLabel}
