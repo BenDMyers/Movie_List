@@ -1,5 +1,10 @@
 div.search-contents {
     background-color: #444;
+    transition: background-color 0.5s ease;
+}
+
+.dark-mode div.search-contents {
+    background-color: #222;
 }
 
 div.search-message {
@@ -10,4 +15,14 @@ div.search-message {
     margin: 0 auto;
     font-family: 'Montserrat', sans-serif;
     line-height: 100px;
+}
+
+div.search-item-card {
+    background-color: #fbfbfb;
+    transition: background-color 0.5s ease;
+    margin-bottom: 20px;
+}
+
+.dark-mode div.search-item-card {
+    background-color: #444;
 }

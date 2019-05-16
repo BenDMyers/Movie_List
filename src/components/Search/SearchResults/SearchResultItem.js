@@ -36,7 +36,7 @@ const SearchResultItem = (props) => {
 
     let movieItem = (
         <LoadingOverlay active={props.inflightMovies.includes(props.id)} spinner={<CircularProgress {...SPINNER_PROPS} />}>
-            <Card style={{marginBottom: '20px'}}>
+            <Card className="search-item-card">
                 <div className="search-result-poster-container">
                     <CardMedia {...posterProps} />
                     {props.currentList && <SearchResultItemRibbon list={props.currentList} />}
