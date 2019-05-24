@@ -5,6 +5,7 @@ import {applyMiddleware, createStore} from 'redux';
 import promise from 'redux-promise';
 import thunk from 'redux-thunk';
 import {save, load} from 'redux-localstorage-simple';
+import HttpsRedirect from 'react-https-redirect';
 
 import './index.css';
 import reducers from './reducers';
@@ -18,8 +19,10 @@ const store = createStoreWithMiddleware(
 );
 
 ReactDOM.render(
-    <Provider store={store}>
-        <App />
-    </Provider>,
+    <HttpsRedirect>
+        <Provider store={store}>
+            <App />
+        </Provider>
+    </HttpsRedirect>,
     document.getElementById('root')
 );
