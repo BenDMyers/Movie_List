@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import './HeadingBar.styles.css';
 
@@ -15,6 +16,9 @@ const wrap = (level, withClasses) => {
     return wrappers[level];
 };
 
+/**
+ * An accessible bar for displaying a heading and subtitle.
+ */
 const HeadingBar = (props) => {
     let style = {...props.style};
     props.backgroundColor && (style.backgroundColor = props.backgroundColor);
@@ -31,6 +35,24 @@ const HeadingBar = (props) => {
             </div>
         </>
     );
+};
+
+HeadingBar.propTypes = {
+    /** Heading level */
+    as: PropTypes.oneOf(['h1', 'h2']),
+    /** Bar color */
+    backgroundColor: PropTypes.string,
+    /** Heading contents (ignoring subtitle) */
+    children: PropTypes.node,
+    /**
+     * Style object to apply to the heading bar.
+     * Is not applied to the screenreader version of the heading bar.
+     */
+    style: PropTypes.object,
+    /** Subtitle to display with the heading */
+    subtitle: PropTypes.string,
+    /** Color of heading text */
+    textColor: PropTypes.string
 };
 
 export default HeadingBar;

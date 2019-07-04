@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {Label} from 'semantic-ui-react';
 
 const RIBBON_OPTIONS = {
@@ -20,6 +21,9 @@ const RIBBON_OPTIONS = {
     }
 };
 
+/**
+ * Ribbon displayed on a card for a search result that's already in a list
+ */
 const SearchResultItemRibbon = (props) => {
     const {color, text} = RIBBON_OPTIONS[props.list];
 
@@ -28,6 +32,11 @@ const SearchResultItemRibbon = (props) => {
             {text}
         </Label>
     );
+};
+
+SearchResultItemRibbon.propTypes = {
+    /** Movie's current list */
+    list: PropTypes.oneOf(['recommended', 'watched', 'alreadyWatched', 'limbo']).isRequired
 };
 
 export default SearchResultItemRibbon;

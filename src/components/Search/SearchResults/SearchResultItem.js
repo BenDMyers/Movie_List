@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import Card from '@material-ui/core/Card';
@@ -18,6 +19,9 @@ const SPINNER_PROPS = {
     className: 'movie-list-spinner'
 };
 
+/**
+ * A card representing a single search result
+ */
 const SearchResultItem = (props) => {
     const handleClick = () => {props.recommend(props.id, props.dispatch);};
     const title = `${props.title} (${props.release_date.split('-')[0]})`;
@@ -65,6 +69,27 @@ const SearchResultItem = (props) => {
     return movieItem;
 };
 
+SearchResultItem.propTypes = {
+    /** The name of the search result's current list, or `undefined` if it's not in a list yet */
+    currentList: PropTypes.oneOf(['recommended', 'watched', 'alreadyWatched', 'limbo']),
+    /** Redux action dispatcher function */
+    dispatch: PropTypes.func.isRequired,
+    /** TMDB's unique identifier for a movie, distinct from the watchlist API's ID */
+    id: PropTypes.number.isRequired,
+    /** List of movies whose recommendation status is currently inflight, for loading spinner purposes */
+    inflightMovies: PropTypes.arrayOf(PropTypes.number),
+    /**
+     * Path to access movie poster on TMDB.
+     * If poster path does not exist, it will be substituted for a placeholder poster.
+     */
+    poster_path: PropTypes.string,
+    /** Bound action creator for recommending a movie by its TMDB ID */
+    recommend: PropTypes.func.isRequired,
+    /** Datestring denoting when the movie was released. Only used for the year. */
+    release_date: PropTypes.string.isRequired,
+    /** Movie's title */
+    title: PropTypes.string.isRequired
+};
 
 const mapStateToProps = (state, ownProps) => {
     const lists = {...state.movies, inflight: state.inflight.movies};

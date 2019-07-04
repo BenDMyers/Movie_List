@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
@@ -15,6 +16,12 @@ const cardActionsStyles = {
     paddingBottom: '16px'
 };
 
+/**
+ * Generates an accessible vote count string for watched movies.
+ * @param {number} numVotes - count of people who voted for this movie
+ * @param {string} list - movie's current list, used for coloring
+ * @return {React.Fragment} a sighted-friendly `<span>` and a screenreader-friendly `<span>` that present the number of votes received
+ */
 const getReceivedVotes = (numVotes, list) => {
     let voteOrVotes = numVotes === 1 ? 'vote' : 'votes';
     return (
@@ -25,6 +32,9 @@ const getReceivedVotes = (numVotes, list) => {
     );
 }
 
+/**
+ * A card representing a single movie in a list
+ */
 const MovieItem = (props) => {
     const title = `${props.title} (${props.year})`;
 
@@ -69,6 +79,29 @@ const MovieItem = (props) => {
             </Card>
         </div>
     );
+};
+
+MovieItem.propTypes = {
+    /** Movie's unique identifier for the API */
+    _id: PropTypes.string.isRequired,
+    /** Name of the list this movie is in. */
+    list: PropTypes.oneOf(['recommended', 'watched', 'alreadyWatched']).isRequired,
+    /** The count of votes this movie has currently received */
+    numVotes: PropTypes.number.isRequired,
+    /**
+     * Path to the movie's poster on TMDB.
+     * If no poster path is provided, the card defaults to using a placeholder poster.
+     */
+    poster: PropTypes.string,
+    /** Movie's name */
+    title: PropTypes.string.isRequired,
+    /**
+     * Datestring denoting the last time this movie was updated in the database.
+     * Used for displaying a movie's watched date.
+     */
+    updatedDate: PropTypes.string.isRequired,
+    /** The year this movie was released */
+    year: PropTypes.string.isRequired
 };
 
 export default MovieItem;

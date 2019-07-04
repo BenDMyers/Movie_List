@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 
 import {getMovies, TRIGGER_SORT} from './actions/moviesActions';
@@ -9,6 +10,9 @@ import MovieList from './components/MovieList';
 import Search from './components/Search';
 import {byTitle, byWatchedDate} from './utils/comparators';
 
+/**
+ * The root component for the entire movie list.
+ */
 class App extends Component {
     componentDidMount() {
         this.props.setUser();
@@ -43,5 +47,12 @@ class App extends Component {
         );
     }
 }
+
+App.propTypes = {
+    /** Bound action creator for fetching the entire movie list */
+    getMovies: PropTypes.func.isRequired,
+    /** Bound action creator for setting the user's authentication */
+    setUser: PropTypes.func.isRequired
+};
 
 export default connect(null, {getMovies, setUser})(App);
