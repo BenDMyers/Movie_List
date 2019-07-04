@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {compose} from 'redux';
 import TextField from '@material-ui/core/TextField';
@@ -20,6 +21,9 @@ const styles = theme => ({
     },
 });
 
+/**
+ * Searchbar used to find movies to recommend
+ */
 const SearchBar = (props) => {
     const {classes} = props;
 
@@ -52,6 +56,15 @@ const SearchBar = (props) => {
             />
         </form>
     );
+};
+
+SearchBar.propTypes = {
+    /** Style object provided by `withStyles` HOC */
+    classes: PropTypes.object.isRequired,
+    /** Redux action dispatcher function */
+    dispatch: PropTypes.func.isRequired,
+    /** Bound action creator that is a hook for mutating controlled search query state */
+    updateSearchQuery: PropTypes.func.isRequired
 };
 
 const mapDispatchToProps = (dispatch) => {

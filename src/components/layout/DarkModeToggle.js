@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Icon from '@material-ui/core/Icon';
 import Switch from '@material-ui/core/Switch';
@@ -32,6 +33,9 @@ const styles = theme => ({
     iconChecked: {boxShadow: theme.shadows[1]}
 });
 
+/**
+ * Toggle switch for switching between dark mode and light mode.
+ */
 const DarkModeToggle = (props) => {
     const darkMode = useDarkMode(false);
 
@@ -57,6 +61,11 @@ const DarkModeToggle = (props) => {
             label={moonLabel}
         />
     );
+};
+
+DarkModeToggle.propTypes = {
+    /** Style object provided by Material UI's `withStyles` HOC and the above theme */
+    classes: PropTypes.object
 };
 
 export default withStyles(styles)(DarkModeToggle);
