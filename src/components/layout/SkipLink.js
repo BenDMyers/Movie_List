@@ -13,10 +13,18 @@ const SkipLink = (props) => {
     const handleBlur = () => {setFocused(false);}
     const jump = () => {document.querySelector(`#${props.to}`).focus();}
 
-    const classes = `skip-link ${props.color} ${focused ? '' : 'screenreader'}`;
+    let position = `${props.top ? 'top' : ''} ${props.right ? 'right' : ''} ${props.bottom ? 'bottom' : ''} ${props.left ? 'left' : ''}`;
+
+    const classes = `skip-link ${props.color} ${position} ${focused ? '' : 'screenreader'}`;
 
     return (
-        <Button id={`skip-to-${props.to}`} className={classes} onClick={jump} onFocus={handleFocus} onBlur={handleBlur}>
+        <Button
+            id={`skip-to-${props.to}`}
+            className={classes}
+            onClick={jump}
+            onFocus={handleFocus}
+            onBlur={handleBlur}
+        >
             {props.children}
         </Button>
     );
