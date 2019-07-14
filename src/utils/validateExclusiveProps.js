@@ -17,7 +17,7 @@ function exclusivePropsValidator(conflictingProps=[], currentPropExpectedType='b
 
         if(props[propName] && conflictingPropsExist.length) {
             return new Error(`Prop \`${propName}\` supplied to \`${componentName}\` may not be supplied with props [${conflictingPropsExist}]. Validation failed.`);
-        } else if(props[propName] !== undefined && typeof props[propName] !== currentPropExpectedType) {
+        } else if(currentPropExpectedType && props[propName] !== undefined && typeof props[propName] !== currentPropExpectedType) {
             return new Error(`Invalid prop \`${propName}\` of type \`${typeof props[propName]}\` supplied to \`${componentName}\`. Expected \`${currentPropExpectedType}\`.`);
         }
     };
