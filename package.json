@@ -16,6 +16,8 @@
     "react-loading-overlay": "^1.0.1",
     "react-odometerjs": "^2.1.1",
     "react-redux": "^7.0.2",
+    "react-router-dom": "^5.0.1",
+    "react-router-hash-link": "^1.2.1",
     "react-scripts": "2.1.8",
     "redux": "^4.0.1",
     "redux-localstorage-simple": "^2.1.6",
