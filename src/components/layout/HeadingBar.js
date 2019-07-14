@@ -24,7 +24,7 @@ const HeadingBar = (props) => {
     props.backgroundColor && (style.backgroundColor = props.backgroundColor);
     props.textColor && (style.color = props.textColor);
     return (
-        <>
+        <div id={props.id} tabIndex="-1">
             <div aria-hidden="true" className="heading-bar" style={style}>
                 {wrap(props.as, true)(props.children)}
                 {wrap('subtitle', true)(props.subtitle)}
@@ -33,7 +33,7 @@ const HeadingBar = (props) => {
                 {wrap(props.as, false)(props.children)}
                 {wrap('subtitle', false)(props.subtitle)}
             </div>
-        </>
+        </div>
     );
 };
 
@@ -44,6 +44,8 @@ HeadingBar.propTypes = {
     backgroundColor: PropTypes.string,
     /** Heading contents (ignoring subtitle) */
     children: PropTypes.node,
+    /** ID for anchor tags */
+    id: PropTypes.string.isRequired,
     /**
      * Style object to apply to the heading bar.
      * Is not applied to the screenreader version of the heading bar.

@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {BrowserRouter} from 'react-router-dom';
 import {Provider} from 'react-redux';
 import {applyMiddleware, createStore} from 'redux';
 import promise from 'redux-promise';
@@ -21,7 +22,9 @@ const store = createStoreWithMiddleware(
 ReactDOM.render(
     <HttpsRedirect>
         <Provider store={store}>
-            <App />
+            <BrowserRouter>
+                <App />
+            </BrowserRouter>
         </Provider>
     </HttpsRedirect>,
     document.getElementById('root')

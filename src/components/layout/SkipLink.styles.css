@@ -1,0 +1,65 @@
+button.skip-link {
+    position: fixed;
+    font-family: 'Montserrat';
+    font-weight: bold;
+    text-transform: none;
+    z-index: 10;
+}
+
+button.skip-link.top {
+    top: 0px;
+}
+
+button.skip-link.right {
+    right: 0px;
+}
+
+button.skip-link.left {
+    left: 0px;
+}
+
+button.skip-link.bottom {
+    bottom: 0px;
+}
+
+button.skip-link:focus {
+    background-color: black;
+    color: white;
+}
+
+button.skip-link:hover {
+    background-color: black;
+    color: white;
+}
+
+button.skip-link.blue:focus {
+    background-color: rgba(63, 81, 181, 0.9);
+}
+
+button.skip-link.blue:focus:hover {
+    background-color: rgba(8, 49, 163, 1);
+}
+
+button.skip-link.green:focus {
+    background-color: rgba(0, 98, 0, 0.9);
+}
+
+button.skip-link.green:focus:hover {
+    background-color: rgba(0, 98, 0, 1);
+}
+
+button.skip-link.purple:focus {
+    background-color: rgba(148, 0, 211, 0.9);
+}
+
+button.skip-link.purple:focus:hover {
+    background-color: rgba(148, 0, 211, 0.9);
+}
+
+button.skip-link.black:focus {
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+button.skip-link.black:focus:hover {
+    background-color: rgba(0, 0, 0, 1);
+}
