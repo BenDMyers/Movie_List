@@ -25,6 +25,7 @@ body.dark-mode {
     position: absolute;
     width: 1px;
     word-wrap: normal;
+    text-transform: none;
 }
 
 div.movie-item-card {

@@ -32,11 +32,14 @@ const VoteButton = (props) => {
     if(!props.userHasAlreadyVoted) {buttonProps.color = 'primary';};
 
     let callToAction = props.userHasAlreadyVoted ? 'Unvote' : 'Vote';
+    let voteOrVotes = props.numVotes === 1 ? 'vote' : 'votes';
+    let screenreaderCallToAction = `${callToAction} for ${props.title}. ${props.numVotes} ${voteOrVotes}.`;
 
     return (
         <Button as='div' labelPosition="right" className="vote-button">
             <MaterialButton {...buttonProps}>
-                {callToAction}
+                <span aria-hidden="true">{callToAction}</span>
+                <span className="screenreader">{screenreaderCallToAction}</span>
             </MaterialButton>
             <Ref innerRef={measuredRef}>
                 <Label basic className="vote-count" pointing="left">
@@ -52,6 +55,8 @@ VoteButton.propTypes = {
     movie: PropTypes.string.isRequired,
     /** Movie's current vote count */
     numVotes: PropTypes.number.isRequired,
+    /** Movie title */
+    title: PropTypes.string.isRequired,
     /** Bound action creator for unvoting for this movie */
     unvote: PropTypes.func.isRequired,
     /** Flag determining whether the user has voted for this movie */
@@ -63,9 +68,10 @@ VoteButton.propTypes = {
 };
 
 const mapStateToProps = (state, ownProps) => {
-    const {numVotes, userHasAlreadyVoted} = state.movies.all.filter(m => m._id === ownProps.movie)[0];
+    const {numVotes, userHasAlreadyVoted, title} = state.movies.all.filter(m => m._id === ownProps.movie)[0];
     return {
         numVotes,
+        title,
         userHasAlreadyVoted,
         uuid: state.user
     };
