@@ -23,9 +23,9 @@ class App extends Component {
     render() {
         return (
             <div>
-                <SkipLink to="vote">Skip to voting on movies</SkipLink>
-                <SkipLink to="watched">Skip to the movies Ben has now watched</SkipLink>
-                <SkipLink to="alreadywatched">Skip to the movies Ben has already seen</SkipLink>
+                <SkipLink to="vote" color="blue">Skip to voting on movies</SkipLink>
+                <SkipLink to="watched" color="green">Skip to the movies Ben has now watched</SkipLink>
+                <SkipLink to="alreadywatched" color="purple">Skip to the movies Ben has already seen</SkipLink>
                 <DarkModeToggle />
                 <HeadingBar id="top" as="h1">What Should Ben Watch Next?</HeadingBar>
                 <Search />
@@ -47,7 +47,7 @@ class App extends Component {
                     </HeadingBar>
                     <MovieList list="alreadyWatched" comparator={byTitle.asc} />
                 </div>
-                <SkipLink to="top">Back to top</SkipLink>
+                <SkipLink to="top" color="black">Back to top</SkipLink>
             </div>
         );
     }

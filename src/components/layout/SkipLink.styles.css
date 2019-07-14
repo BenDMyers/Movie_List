@@ -19,37 +19,33 @@ button.skip-link:hover {
 }
 
 button.skip-link.blue:focus {
-    background-color: rgb(28, 69, 183);
-    color: white;
+    background-color: rgba(63, 81, 181, 0.9);
 }
 
 button.skip-link.blue:focus:hover {
-    background-color: rgb(8, 49, 163);
+    background-color: rgba(8, 49, 163, 1);
 }
 
 button.skip-link.green:focus {
-    background-color: rgb(28, 69, 183);
-    color: white;
+    background-color: rgba(0, 98, 0, 0.9);
 }
 
 button.skip-link.green:focus:hover {
-    background-color: rgb(8, 49, 163);
+    background-color: rgba(0, 98, 0, 1);
 }
 
 button.skip-link.purple:focus {
-    background-color: rgb(28, 69, 183);
-    color: white;
+    background-color: rgba(148, 0, 211, 0.9);
 }
 
 button.skip-link.purple:focus:hover {
-    background-color: rgb(8, 49, 163);
+    background-color: rgba(148, 0, 211, 0.9);
 }
 
 button.skip-link.black:focus {
-    background-color: rgb(28, 69, 183);
-    color: white;
+    background-color: rgba(0, 0, 0, 0.9);
 }
 
 button.skip-link.black:focus:hover {
-    background-color: rgb(8, 49, 163);
+    background-color: rgba(0, 0, 0, 1);
 }
